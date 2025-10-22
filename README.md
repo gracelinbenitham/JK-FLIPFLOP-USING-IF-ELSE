@@ -1,48 +1,115 @@
-# JKFLIPFLOP-USING-IF-ELSE
+### study-of-basic-gates
 
 **AIM:** 
 
-To implement  JK flipflop using verilog and validating their functionality using their functional tables
+To study and verify the truth table of logic gates in Quartus II using Verilog programming.
 
-**SOFTWARE REQUIRED:**
+**Equipments Required:**
 
-Quartus prime
+Software – Quartus prime 
 
-**THEORY**
+**Theory**
 
-**JK Flip-Flop**
+Introduction Logic gates are the basic building blocks of any digital system. Logic gates are electronic circuits having one or more than one input and only one output. The relationship between the input and the output is based on a certain logic. Based on this, logic gates are named as
 
-JK flip-flop is the modified version of SR flip-flop. It operates with only positive clock transitions or negative clock transitions. The circuit diagram of JK flip-flop is shown in the following figure.
+AND gate OR gate NOT gate NAND gate NOR gate Ex-OR gate Ex-NOR gate
 
-![image](https://github.com/naavaneetha/JKFLIPFLOP-USING-IF-ELSE/assets/154305477/a649c30b-232b-4558-b188-fd6c09845180)
+**AND gate**
 
+The AND gate is an electronic circuit that gives a high output (1) only if all its inputs are high. A dot (.) is used to show the AND operation i.e. A.B or can be written as AB
+Y= A.B
 
-This circuit has two inputs J & K and two outputs Qtt & Qtt’. The operation of JK flip-flop is similar to SR flip-flop. Here, we considered the inputs of SR flip-flop as S = J Qtt’ and R = KQtt in order to utilize the modified SR flip-flop for 4 combinations of inputs. The following table shows the state table of JK flip-flop.
+**OR gate** 
 
-![image](https://github.com/naavaneetha/JKFLIPFLOP-USING-IF-ELSE/assets/154305477/c4360742-e8a8-4937-b089-c46c0433f9a3)
+The OR gate is an electronic circuit that gives a high output (1) if one or more of its inputs are high. A plus (+) is used to show the OR operation.
+Y= A+B
 
- 
-Here, Qtt & Qt+1t+1 are present state & next state respectively. So, JK flip-flop can be used for one of these four functions such as Hold, Reset, Set & Complement of present state based on the input conditions, when positive transition of clock signal is applied. The following table shows the characteristic table of JK flip-flop. Present Inputs Present State Next State
- 
-![image](https://github.com/naavaneetha/JKFLIPFLOP-USING-IF-ELSE/assets/154305477/6c275261-a6d5-4c37-a3a7-1e88ca11c4cd)
+**NOT gate**
 
-By using three variable K-Map, we can get the simplified expression for next state, Qt+1t+1. Three variable K-Map for next state, Qt+1t+1 is shown in the following figure.
- 
-![image](https://github.com/naavaneetha/JKFLIPFLOP-USING-IF-ELSE/assets/154305477/5174f41b-0ce0-4329-a372-6d1943ea6673)
+The NOT gate is an electronic circuit that produces an inverted version of the input at its output. It is also known as an inverter. If the input variable is A, the inverted output is known as NOT A. This is also shown as A' or A with a bar over the top, as shown at the outputs.
+Y= A'
 
-The maximum possible groupings of adjacent ones are already shown in the figure. Therefore, the simplified expression for next state Qt+1t+1 is Q(t+1)=JQ(t)′+K′Q(t)Q(t+1)=JQ(t)′+K′Q(t)
+**NAND gate**
 
-**Procedure**
+This is a NOT-AND gate which is equal to an AND gate followed by a NOT gate. The outputs of all NAND gates are high if any of the inputs are low. The symbol is an AND gate with a small circle on the output. The small circle represents inversion.
+Y= (AB)’
 
-/* write all the steps invloved */
+**NOR gate**
+
+This is a NOT-OR gate which is equal to an OR gate followed by a NOT gate. The outputs of all NOR gates are low if any of the inputs are high. The symbol is an OR gate with a small circle on the output. The small circle represents inversion.
+Y= (A+B)’
+
+**Ex-OR gate**
+
+The 'Exclusive-OR' gate is a circuit which will give a high output if either, but not both of its two inputs are high. An encircled plus sign (⊕) is used to show the Ex-OR operation.
+Y= A⊕B
+
+**Ex-NOR gate**
+
+The 'Exclusive-NOR' gate circuit does the opposite to the EX-OR gate. It will give a low output if either, but not both of its two inputs are high. The symbol is an EX-OR gate with a small circle on the output. The small circle represents inversion.
+Y= A⊕B
+
+**Procedure** 
+
+1.	Type the program in Quartus software.
+
+2.	Compile and run the program.
+
+3.	Generate the RTL schematic and save the logic diagram.
+
+4.	Create nodes for inputs and outputs to generate the timing diagram.
+
+5.	For different input combinations generate the timing diagram.
+
 
 **PROGRAM**
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+Program for logic gates and verify its truth table in quartus using Verilog programming
 
-**RTL LOGIC FOR FLIPFLOPS**
+ Developed by: Gracelin Benitha M 
+ RegisterNumber: 25011396
+ 
+**Logic symbol & Truthtable**
+```
 
-**TIMING DIGRAMS FOR FLIP FLOPS**
+module EXP1 (
+    input  wire a,     // Input A
+    input  wire b,     // Input B
+    output wire and_out,
+    output wire or_out,
+    output wire not_out,   // only on A
+    output wire nand_out,
+    output wire nor_out,
+    output wire xor_out,
+    output wire xnor_out
+);
 
-**RESULTS**
+    assign and_out  = a & b;      // AND gate
+    assign or_out   = a | b;      // OR gate
+    assign not_out  = ~a;         // NOT gate (on input A)
+    assign nand_out = ~(a & b);   // NAND gate
+    assign nor_out  = ~(a | b);   // NOR gate
+    assign xor_out  = a ^ b;      // XOR gate
+    assign xnor_out = ~(a ^ b);   // XNOR gate
+
+endmodule
+
+```
+**Logic symbol & Truthtable**
+
+![Truth table](https://github.com/user-attachments/assets/875f3fe9-9d9b-49e8-a799-85bbf3ca0663)
+
+
+**RTL realization Output:** 
+<img width="1300" height="696" alt="image" src="https://github.com/user-attachments/assets/16c549c1-5fb6-463f-b2e8-c6f3c20f08d7" />
+
+
+**RTL**
+<img width="1513" height="823" alt="Screenshot 2025-09-29 161644" src="https://github.com/user-attachments/assets/1da9008f-4220-44e7-a305-ebe0dca82a1d" />
+
+
+**Result:**
+Thus the logic gates are studied and their Truth tables are verified
+
+
+
